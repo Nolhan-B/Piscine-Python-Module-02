@@ -56,6 +56,7 @@ def test_custom_errors() -> None:
     print("All custom error types work correctly!")
 
 def main():
+    """Point d’entrée principal du programme."""
     test_custom_errors()
 
 
