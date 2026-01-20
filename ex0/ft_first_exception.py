@@ -1,5 +1,5 @@
 def check_temperature(temp_str: str) -> int:
-    """Vérifie si la température est valide et comprise entre 0 et 40 degrés."""
+    """Vérifie si la température est valide et comprise entre 0 & 40 degrés."""
     try:
         temp: int = int(temp_str)
     except ValueError:
@@ -27,6 +27,7 @@ def test_temperature_input() -> None:
             print(f"Error: {error}\n")
 
     print("All tests completed - program didn't crash!")
+
 
 def main():
     test_temperature_input()
