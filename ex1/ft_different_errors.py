@@ -1,13 +1,11 @@
 def garden_operations() -> None:
     """Déclenche et gère différents types d'erreurs Python."""
-    # ValueError
     try:
         print("Testing ValueError...")
         int("abc")
     except ValueError:
         print("Caught ValueError: invalid literal for int()\n")
 
-    # ZeroDivisionError
     try:
         print("Testing ZeroDivisionError...")
         result: float = 10 / 0
@@ -15,7 +13,6 @@ def garden_operations() -> None:
     except ZeroDivisionError:
         print("Caught ZeroDivisionError: division by zero\n")
 
-    # FileNotFoundError
     try:
         print("Testing FileNotFoundError...")
         file = open("missing.txt", "r")
@@ -23,7 +20,6 @@ def garden_operations() -> None:
     except FileNotFoundError:
         print("Caught FileNotFoundError: No such file 'missing.txt'\n")
 
-    # KeyError
     try:
         print("Testing KeyError...")
         plants: dict[str, int] = {"rose": 3}

@@ -4,13 +4,13 @@ class GardenError(Exception):
         super().__init__(message)
 
 
-class PlantError(Exception):
+class PlantError(GardenError):
     """Erreur de base liée aux plantes."""
     def __init__(self, message: str) -> None:
         super().__init__(message)
 
 
-class WaterError(Exception):
+class WaterError(GardenError):
     """Erreur de base liée a l'eau."""
     def __init__(self, message: str) -> None:
         super().__init__(message)
