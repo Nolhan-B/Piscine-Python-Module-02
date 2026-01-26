@@ -67,7 +67,7 @@ class Plant:
     def water(self) -> None:
         self.water_level += 1
 
-    def check_health(self):
+    def check_health(self) -> None:
         if self.water_level < 1:
             raise PlantError(
                 f"Error checking {self.name}: "
@@ -99,8 +99,7 @@ class Plant:
 class Garden:
     def __init__(self, name: str) -> None:
         self.name = name
-
-    plant_collection: list[Plant] = []
+        self.plant_collection: list[Plant] = []
 
     def add_plant(self, new_plant: Plant) -> None:
         if (new_plant is None):
@@ -132,9 +131,11 @@ class Garden:
 
 class GardenManager:
 
+    @staticmethod
     def create_garden(name: str) -> Garden:
         return Garden(name)
 
+    @staticmethod
     def add_multiple_plant_to_garden(
         plants_to_add: list[Plant | None],
         garden: Garden
@@ -146,6 +147,7 @@ class GardenManager:
             except ValueError as e:
                 print(f"Error adding plant: {e}")
 
+    @staticmethod
     def water_garden_plants(garden: Garden, water_tank: WaterTank) -> None:
         try:
             print("Opening Watering system")
@@ -157,6 +159,7 @@ class GardenManager:
         finally:
             print("Closing watering system (cleanup)\n")
 
+    @staticmethod
     def water_plant(plant: Plant, water_tank: WaterTank) -> None:
         error: int = 0
         try:
@@ -172,6 +175,7 @@ class GardenManager:
             if error != 0:
                 print("System recovered and continuing...\n")
 
+    @staticmethod
     def check_garden_plants_health(garden) -> None:
         try:
             garden.check_plant_health()
