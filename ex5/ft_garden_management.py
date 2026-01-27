@@ -35,7 +35,7 @@ class WaterTank:
 
     def water(self) -> None:
         if self.__current_volume == 0:
-            raise GardenError("Not enough water in tank")
+            raise WaterError("Not enough water in tank")
         self.__current_volume -= 1
 
     def fill(self, amount: int) -> None:
@@ -110,7 +110,7 @@ class Garden:
         print(f"Added {new_plant.name} successfully")
 
     def water_plants(self, water_tank: WaterTank) -> None:
-        if self.plant_collection is None:
+        if not self.plant_collection:
             raise GardenError("There is no plant to water!")
         if water_tank is None:
             raise GardenError("No WaterTank provided!")
@@ -120,7 +120,7 @@ class Garden:
             print(f"Watering {plant.name} - success")
 
     def check_plant_health(self) -> None:
-        if self.plant_collection is None:
+        if not self.plant_collection:
             raise GardenError("There is no plant to check health!")
         for plant in self.plant_collection:
             try:
@@ -152,10 +152,10 @@ class GardenManager:
         try:
             print("Opening Watering system")
             garden.water_plants(water_tank)
-        except GardenError as e:
-            print(f"Caught GardenError: {e}")
         except WaterError as e:
             print(f"Caught WaterError: {e}")
+        except GardenError as e:
+            print(f"Caught GardenError: {e}")
         finally:
             print("Closing watering system (cleanup)\n")
 
@@ -176,7 +176,7 @@ class GardenManager:
                 print("System recovered and continuing...\n")
 
     @staticmethod
-    def check_garden_plants_health(garden) -> None:
+    def check_garden_plants_health(garden: Garden) -> None:
         try:
             garden.check_plant_health()
         except GardenError as e:
